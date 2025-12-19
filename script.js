@@ -1,0 +1,442 @@
+// ═══════════════════════════════════════════════════════════════
+// ANIME MC HUB - COMPLETE CHARACTER DATABASE & LOGIC
+// Production-ready, scalable, data-driven architecture
+// ═══════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════
+// 1. COMPREHENSIVE CHARACTER DATABASE
+// ═══════════════════════════════════════════════════════════════
+
+const CHARACTER_DATABASE = {
+    // NARUTO UNIVERSE
+    naruto: [
+        { name: "Naruto Uzumaki", anime: "Naruto", image: "naruto.jpg", type: "hero", stats: { power: 95, speed: 90, intelligence: 70, durability: 95, combat: 92, special: 98 }},
+        { name: "Sasuke Uchiha", anime: "Naruto", image: "sasuke.jpg", type: "anti-hero", stats: { power: 96, speed: 95, intelligence: 88, durability: 85, combat: 97, special: 95 }},
+        { name: "Sakura Haruno", anime: "Naruto", image: "sakura.jpg", type: "hero", stats: { power: 85, speed: 80, intelligence: 92, durability: 88, combat: 87, special: 90 }},
+        { name: "Kakashi Hatake", anime: "Naruto", image: "kakashi.jpg", type: "hero", stats: { power: 90, speed: 88, intelligence: 95, durability: 82, combat: 94, special: 93 }},
+        { name: "Itachi Uchiha", anime: "Naruto", image: "itachi.jpg", type: "anti-hero", stats: { power: 94, speed: 92, intelligence: 99, durability: 80, combat: 96, special: 97 }},
+        { name: "Madara Uchiha", anime: "Naruto", image: "madara.jpg", type: "villain", stats: { power: 99, speed: 93, intelligence: 96, durability: 95, combat: 98, special: 99 }},
+        { name: "Obito Uchiha", anime: "Naruto", image: "obito.jpg", type: "villain", stats: { power: 92, speed: 94, intelligence: 90, durability: 88, combat: 91, special: 96 }},
+        { name: "Minato Namikaze", anime: "Naruto", image: "minato.jpg", type: "hero", stats: { power: 93, speed: 99, intelligence: 94, durability: 85, combat: 95, special: 94 }},
+        { name: "Jiraiya", anime: "Naruto", image: "jiraiya.jpg", type: "hero", stats: { power: 88, speed: 82, intelligence: 91, durability: 86, combat: 89, special: 90 }},
+        { name: "Pain (Nagato)", anime: "Naruto", image: "pain.jpg", type: "villain", stats: { power: 97, speed: 85, intelligence: 93, durability: 82, combat: 94, special: 98 }},
+        { name: "Gaara", anime: "Naruto", image: "gaara.jpg", type: "hero", stats: { power: 90, speed: 78, intelligence: 85, durability: 92, combat: 88, special: 93 }},
+        { name: "Rock Lee", anime: "Naruto", image: "rock-lee.jpg", type: "hero", stats: { power: 82, speed: 96, intelligence: 68, durability: 90, combat: 94, special: 75 }}
+    ],
+    
+    // DRAGON BALL UNIVERSE
+    dragonBall: [
+        { name: "Goku", anime: "Dragon Ball Z", image: "goku.jpg", type: "hero", stats: { power: 100, speed: 98, intelligence: 75, durability: 97, combat: 99, special: 100 }},
+        { name: "Vegeta", anime: "Dragon Ball Z", image: "vegeta.jpg", type: "anti-hero", stats: { power: 99, speed: 97, intelligence: 85, durability: 96, combat: 98, special: 98 }},
+        { name: "Gohan", anime: "Dragon Ball Z", image: "gohan.jpg", type: "hero", stats: { power: 96, speed: 93, intelligence: 92, durability: 90, combat: 94, special: 97 }},
+        { name: "Piccolo", anime: "Dragon Ball Z", image: "piccolo.jpg", type: "hero", stats: { power: 88, speed: 85, intelligence: 94, durability: 91, combat: 90, special: 89 }},
+        { name: "Frieza", anime: "Dragon Ball Z", image: "frieza.jpg", type: "villain", stats: { power: 95, speed: 94, intelligence: 88, durability: 93, combat: 92, special: 94 }},
+        { name: "Cell", anime: "Dragon Ball Z", image: "cell.jpg", type: "villain", stats: { power: 94, speed: 92, intelligence: 90, durability: 95, combat: 93, special: 93 }},
+        { name: "Majin Buu", anime: "Dragon Ball Z", image: "buu.jpg", type: "villain", stats: { power: 96, speed: 88, intelligence: 65, durability: 99, combat: 89, special: 95 }},
+        { name: "Trunks", anime: "Dragon Ball Z", image: "trunks.jpg", type: "hero", stats: { power: 90, speed: 91, intelligence: 83, durability: 87, combat: 89, special: 88 }},
+        { name: "Goku Black", anime: "Dragon Ball Super", image: "goku-black.jpg", type: "villain", stats: { power: 97, speed: 96, intelligence: 87, durability: 94, combat: 96, special: 96 }},
+        { name: "Beerus", anime: "Dragon Ball Super", image: "beerus.jpg", type: "anti-hero", stats: { power: 100, speed: 99, intelligence: 90, durability: 98, combat: 97, special: 99 }}
+    ],
+    
+    // DEATH NOTE UNIVERSE
+    deathNote: [
+        { name: "Light Yagami", anime: "Death Note", image: "light.jpg", type: "anti-hero", stats: { power: 70, speed: 65, intelligence: 100, durability: 60, combat: 55, special: 99 }},
+        { name: "L Lawliet", anime: "Death Note", image: "l.jpg", type: "hero", stats: { power: 45, speed: 50, intelligence: 100, durability: 55, combat: 40, special: 95 }},
+        { name: "Near", anime: "Death Note", image: "near.jpg", type: "hero", stats: { power: 40, speed: 45, intelligence: 98, durability: 50, combat: 35, special: 92 }},
+        { name: "Mello", anime: "Death Note", image: "mello.jpg", type: "anti-hero", stats: { power: 55, speed: 70, intelligence: 95, durability: 65, combat: 75, special: 88 }},
+        { name: "Ryuk", anime: "Death Note", image: "ryuk.jpg", type: "neutral", stats: { power: 85, speed: 80, intelligence: 75, durability: 95, combat: 70, special: 98 }}
+    ],
+    
+    // ONE PIECE UNIVERSE
+    onePiece: [
+        { name: "Monkey D. Luffy", anime: "One Piece", image: "luffy.jpg", type: "hero", stats: { power: 96, speed: 92, intelligence: 65, durability: 95, combat: 94, special: 97 }},
+        { name: "Roronoa Zoro", anime: "One Piece", image: "zoro.jpg", type: "hero", stats: { power: 93, speed: 90, intelligence: 72, durability: 92, combat: 98, special: 91 }},
+        { name: "Sanji", anime: "One Piece", image: "sanji.jpg", type: "hero", stats: { power: 89, speed: 94, intelligence: 80, durability: 88, combat: 93, special: 87 }},
+        { name: "Trafalgar Law", anime: "One Piece", image: "law.jpg", type: "anti-hero", stats: { power: 90, speed: 87, intelligence: 92, durability: 85, combat: 91, special: 94 }},
+        { name: "Portgas D. Ace", anime: "One Piece", image: "ace.jpg", type: "hero", stats: { power: 91, speed: 89, intelligence: 78, durability: 83, combat: 90, special: 93 }},
+        { name: "Shanks", anime: "One Piece", image: "shanks.jpg", type: "hero", stats: { power: 98, speed: 91, intelligence: 88, durability: 90, combat: 97, special: 96 }},
+        { name: "Doflamingo", anime: "One Piece", image: "doflamingo.jpg", type: "villain", stats: { power: 88, speed: 86, intelligence: 90, durability: 85, combat: 89, special: 91 }},
+        { name: "Kaido", anime: "One Piece", image: "kaido.jpg", type: "villain", stats: { power: 100, speed: 85, intelligence: 82, durability: 100, combat: 96, special: 97 }}
+    ],
+    
+    // BLEACH UNIVERSE
+    bleach: [
+        { name: "Ichigo Kurosaki", anime: "Bleach", image: "ichigo.jpg", type: "hero", stats: { power: 95, speed: 93, intelligence: 75, durability: 90, combat: 94, special: 96 }},
+        { name: "Rukia Kuchiki", anime: "Bleach", image: "rukia.jpg", type: "hero", stats: { power: 82, speed: 85, intelligence: 88, durability: 80, combat: 86, special: 89 }},
+        { name: "Byakuya Kuchiki", anime: "Bleach", image: "byakuya.jpg", type: "hero", stats: { power: 92, speed: 96, intelligence: 90, durability: 86, combat: 95, special: 93 }},
+        { name: "Sosuke Aizen", anime: "Bleach", image: "aizen.jpg", type: "villain", stats: { power: 98, speed: 90, intelligence: 99, durability: 92, combat: 96, special: 99 }},
+        { name: "Kenpachi Zaraki", anime: "Bleach", image: "kenpachi.jpg", type: "anti-hero", stats: { power: 99, speed: 82, intelligence: 60, durability: 98, combat: 100, special: 85 }},
+        { name: "Toshiro Hitsugaya", anime: "Bleach", image: "toshiro.jpg", type: "hero", stats: { power: 88, speed: 89, intelligence: 92, durability: 82, combat: 90, special: 91 }},
+        { name: "Ulquiorra Cifer", anime: "Bleach", image: "ulquiorra.jpg", type: "villain", stats: { power: 94, speed: 93, intelligence: 87, durability: 91, combat: 95, special: 94 }}
+    ],
+    
+    // ATTACK ON TITAN UNIVERSE
+    attackOnTitan: [
+        { name: "Eren Yeager", anime: "Attack on Titan", image: "eren.jpg", type: "anti-hero", stats: { power: 96, speed: 88, intelligence: 80, durability: 94, combat: 91, special: 97 }},
+        { name: "Mikasa Ackerman", anime: "Attack on Titan", image: "mikasa.jpg", type: "hero", stats: { power: 90, speed: 96, intelligence: 85, durability: 88, combat: 98, special: 87 }},
+        { name: "Levi Ackerman", anime: "Attack on Titan", image: "levi.jpg", type: "hero", stats: { power: 88, speed: 99, intelligence: 92, durability: 86, combat: 100, special: 90 }},
+        { name: "Armin Arlert", anime: "Attack on Titan", image: "armin.jpg", type: "hero", stats: { power: 82, speed: 70, intelligence: 98, durability: 75, combat: 76, special: 93 }},
+        { name: "Reiner Braun", anime: "Attack on Titan", image: "reiner.jpg", type: "anti-hero", stats: { power: 92, speed: 80, intelligence: 83, durability: 96, combat: 88, special: 89 }},
+        { name: "Zeke Yeager", anime: "Attack on Titan", image: "zeke.jpg", type: "villain", stats: { power: 94, speed: 82, intelligence: 96, durability: 90, combat: 87, special: 95 }}
+    ],
+    
+    // DEMON SLAYER UNIVERSE
+    demonSlayer: [
+        { name: "Tanjiro Kamado", anime: "Demon Slayer", image: "tanjiro.jpg", type: "hero", stats: { power: 88, speed: 90, intelligence: 85, durability: 87, combat: 92, special: 91 }},
+        { name: "Nezuko Kamado", anime: "Demon Slayer", image: "nezuko.jpg", type: "hero", stats: { power: 86, speed: 88, intelligence: 70, durability: 92, combat: 84, special: 90 }},
+        { name: "Zenitsu Agatsuma", anime: "Demon Slayer", image: "zenitsu.jpg", type: "hero", stats: { power: 82, speed: 97, intelligence: 65, durability: 75, combat: 89, special: 88 }},
+        { name: "Inosuke Hashibira", anime: "Demon Slayer", image: "inosuke.jpg", type: "hero", stats: { power: 85, speed: 91, intelligence: 55, durability: 88, combat: 90, special: 80 }},
+        { name: "Giyu Tomioka", anime: "Demon Slayer", image: "giyu.jpg", type: "hero", stats: { power: 91, speed: 93, intelligence: 88, durability: 87, combat: 95, special: 92 }},
+        { name: "Muzan Kibutsuji", anime: "Demon Slayer", image: "muzan.jpg", type: "villain", stats: { power: 99, speed: 95, intelligence: 94, durability: 98, combat: 96, special: 98 }},
+        { name: "Rengoku Kyojuro", anime: "Demon Slayer", image: "rengoku.jpg", type: "hero", stats: { power: 90, speed: 92, intelligence: 86, durability: 89, combat: 94, special: 93 }},
+        { name: "Akaza", anime: "Demon Slayer", image: "akaza.jpg", type: "villain", stats: { power: 95, speed: 97, intelligence: 82, durability: 93, combat: 98, special: 91 }}
+    ],
+    
+    // JUJUTSU KAISEN UNIVERSE
+    jujutsuKaisen: [
+        { name: "Yuji Itadori", anime: "Jujutsu Kaisen", image: "yuji.jpg", type: "hero", stats: { power: 89, speed: 92, intelligence: 75, durability: 91, combat: 90, special: 93 }},
+        { name: "Megumi Fushiguro", anime: "Jujutsu Kaisen", image: "megumi.jpg", type: "hero", stats: { power: 85, speed: 86, intelligence: 92, durability: 82, combat: 88, special: 91 }},
+        { name: "Nobara Kugisaki", anime: "Jujutsu Kaisen", image: "nobara.jpg", type: "hero", stats: { power: 80, speed: 84, intelligence: 83, durability: 78, combat: 86, special: 87 }},
+        { name: "Satoru Gojo", anime: "Jujutsu Kaisen", image: "gojo.jpg", type: "hero", stats: { power: 100, speed: 98, intelligence: 97, durability: 95, combat: 99, special: 100 }},
+        { name: "Sukuna", anime: "Jujutsu Kaisen", image: "sukuna.jpg", type: "villain", stats: { power: 100, speed: 96, intelligence: 95, durability: 98, combat: 99, special: 100 }},
+        { name: "Toge Inumaki", anime: "Jujutsu Kaisen", image: "inumaki.jpg", type: "hero", stats: { power: 78, speed: 82, intelligence: 85, durability: 75, combat: 80, special: 94 }},
+        { name: "Maki Zenin", anime: "Jujutsu Kaisen", image: "maki.jpg", type: "hero", stats: { power: 87, speed: 91, intelligence: 80, durability: 89, combat: 93, special: 72 }}
+    ],
+    
+    // POKEMON UNIVERSE
+    pokemon: [
+        { name: "Ash Ketchum", anime: "Pokemon", image: "ash.jpg", type: "hero", stats: { power: 75, speed: 80, intelligence: 78, durability: 82, combat: 77, special: 85 }},
+        { name: "Pikachu", anime: "Pokemon", image: "pikachu.jpg", type: "hero", stats: { power: 88, speed: 95, intelligence: 70, durability: 80, combat: 90, special: 92 }},
+        { name: "Charizard", anime: "Pokemon", image: "charizard.jpg", type: "hero", stats: { power: 92, speed: 88, intelligence: 72, durability: 87, combat: 91, special: 90 }},
+        { name: "Mewtwo", anime: "Pokemon", image: "mewtwo.jpg", type: "anti-hero", stats: { power: 98, speed: 92, intelligence: 99, durability: 90, combat: 95, special: 100 }},
+        { name: "Gary Oak", anime: "Pokemon", image: "gary.jpg", type: "anti-hero", stats: { power: 76, speed: 78, intelligence: 88, durability: 75, combat: 80, special: 82 }},
+        { name: "Team Rocket", anime: "Pokemon", image: "team-rocket.jpg", type: "villain", stats: { power: 60, speed: 65, intelligence: 70, durability: 68, combat: 62, special: 72 }}
+    ],
+    
+    // MY HERO ACADEMIA UNIVERSE
+    myHeroAcademia: [
+        { name: "Izuku Midoriya", anime: "My Hero Academia", image: "deku.jpg", type: "hero", stats: { power: 92, speed: 90, intelligence: 95, durability: 88, combat: 89, special: 94 }},
+        { name: "Katsuki Bakugo", anime: "My Hero Academia", image: "bakugo.jpg", type: "anti-hero", stats: { power: 91, speed: 92, intelligence: 87, durability: 86, combat: 95, special: 90 }},
+        { name: "Shoto Todoroki", anime: "My Hero Academia", image: "todoroki.jpg", type: "hero", stats: { power: 93, speed: 88, intelligence: 90, durability: 87, combat: 91, special: 96 }},
+        { name: "All Might", anime: "My Hero Academia", image: "allmight.jpg", type: "hero", stats: { power: 100, speed: 96, intelligence: 88, durability: 95, combat: 98, special: 97 }},
+        { name: "Tomura Shigaraki", anime: "My Hero Academia", image: "shigaraki.jpg", type: "villain", stats: { power: 94, speed: 85, intelligence: 86, durability: 88, combat: 87, special: 95 }}
+    ],
+    
+    // FULLMETAL ALCHEMIST UNIVERSE
+    fullmetalAlchemist: [
+        { name: "Edward Elric", anime: "Fullmetal Alchemist", image: "edward.jpg", type: "hero", stats: { power: 86, speed: 88, intelligence: 98, durability: 82, combat: 90, special: 94 }},
+        { name: "Alphonse Elric", anime: "Fullmetal Alchemist", image: "alphonse.jpg", type: "hero", stats: { power: 84, speed: 80, intelligence: 95, durability: 95, combat: 86, special: 88 }},
+        { name: "Roy Mustang", anime: "Fullmetal Alchemist", image: "mustang.jpg", type: "hero", stats: { power: 90, speed: 85, intelligence: 94, durability: 80, combat: 92, special: 95 }},
+        { name: "Scar", anime: "Fullmetal Alchemist", image: "scar.jpg", type: "anti-hero", stats: { power: 88, speed: 87, intelligence: 82, durability: 86, combat: 91, special: 89 }}
+    ],
+    
+    // HUNTER X HUNTER UNIVERSE
+    hunterXHunter: [
+        { name: "Gon Freecss", anime: "Hunter x Hunter", image: "gon.jpg", type: "hero", stats: { power: 90, speed: 92, intelligence: 80, durability: 88, combat: 91, special: 93 }},
+        { name: "Killua Zoldyck", anime: "Hunter x Hunter", image: "killua.jpg", type: "hero", stats: { power: 89, speed: 98, intelligence: 94, durability: 86, combat: 95, special: 92 }},
+        { name: "Kurapika", anime: "Hunter x Hunter", image: "kurapika.jpg", type: "anti-hero", stats: { power: 87, speed: 86, intelligence: 96, durability: 82, combat: 90, special: 94 }},
+        { name: "Hisoka", anime: "Hunter x Hunter", image: "hisoka.jpg", type: "villain", stats: { power: 92, speed: 94, intelligence: 93, durability: 85, combat: 97, special: 95 }},
+        { name: "Meruem", anime: "Hunter x Hunter", image: "meruem.jpg", type: "villain", stats: { power: 100, speed: 97, intelligence: 100, durability: 99, combat: 99, special: 98 }}
+    ],
+    
+    // CODE GEASS UNIVERSE
+    codeGeass: [
+        { name: "Lelouch vi Britannia", anime: "Code Geass", image: "lelouch.jpg", type: "anti-hero", stats: { power: 65, speed: 60, intelligence: 100, durability: 55, combat: 70, special: 99 }},
+        { name: "Suzaku Kururugi", anime: "Code Geass", image: "suzaku.jpg", type: "anti-hero", stats: { power: 85, speed: 92, intelligence: 88, durability: 86, combat: 94, special: 80 }},
+        { name: "C.C.", anime: "Code Geass", image: "cc.jpg", type: "hero", stats: { power: 70, speed: 75, intelligence: 94, durability: 100, combat: 72, special: 96 }}
+    ],
+    
+    // HELLSING UNIVERSE
+    hellsing: [
+        { name: "Alucard", anime: "Hellsing Ultimate", image: "alucard.jpg", type: "anti-hero", stats: { power: 100, speed: 96, intelligence: 92, durability: 100, combat: 98, special: 100 }},
+        { name: "Seras Victoria", anime: "Hellsing Ultimate", image: "seras.jpg", type: "hero", stats: { power: 88, speed: 90, intelligence: 78, durability: 92, combat: 87, special: 89 }},
+        { name: "Alexander Anderson", anime: "Hellsing Ultimate", image: "anderson.jpg", type: "villain", stats: { power: 94, speed: 93, intelligence: 80, durability: 96, combat: 95, special: 92 }}
+    ],
+    
+    // BAKI UNIVERSE
+    baki: [
+        { name: "Baki Hanma", anime: "Baki", image: "baki.jpg", type: "hero", stats: { power: 96, speed: 94, intelligence: 82, durability: 95, combat: 99, special: 88 }},
+        { name: "Yujiro Hanma", anime: "Baki", image: "yujiro.jpg", type: "villain", stats: { power: 100, speed: 98, intelligence: 90, durability: 100, combat: 100, special: 95 }},
+        { name: "Doppo Orochi", anime: "Baki", image: "doppo.jpg", type: "hero", stats: { power: 88, speed: 86, intelligence: 92, durability: 90, combat: 94, special: 85 }}
+    ]
+};
+
+// ═══════════════════════════════════════════════════════════════
+// 2. IMAGE MAPPER - SMART FALLBACK SYSTEM
+// ═══════════════════════════════════════════════════════════════
+
+function getCharacterImagePath(character) {
+    return `images/${character.image}`;
+}
+
+function handleImageError(imgElement, character) {
+    const fallback = document.createElement('div');
+    fallback.className = 'image-fallback';
+    fallback.textContent = character.name.charAt(0).toUpperCase();
+    imgElement.parentNode.replaceChild(fallback, imgElement);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 3. CHARACTER CARD RENDERER
+// ═══════════════════════════════════════════════════════════════
+
+function createCharacterCard(character) {
+    const card = document.createElement('div');
+    card.className = 'character-card';
+    
+    const img = document.createElement('img');
+    img.className = 'character-image';
+    img.src = getCharacterImagePath(character);
+    img.alt = character.name;
+    img.onerror = () => handleImageError(img, character);
+    
+    const name = document.createElement('div');
+    name.className = 'character-name';
+    name.textContent = character.name;
+    
+    const anime = document.createElement('div');
+    anime.className = 'character-anime';
+    anime.textContent = character.anime;
+    
+    const statsContainer = document.createElement('div');
+    statsContainer.className = 'character-stats';
+    
+    const statLabels = {
+        power: 'Power',
+        speed: 'Speed',
+        intelligence: 'Intelligence',
+        durability: 'Durability',
+        combat: 'Combat',
+        special: 'Special'
+    };
+    
+    for (const [key, label] of Object.entries(statLabels)) {
+        const statRow = document.createElement('div');
+        statRow.className = 'stat-row';
+        
+        const statLabel = document.createElement('span');
+        statLabel.className = 'stat-label';
+        statLabel.textContent = label;
+        
+        const statBar = document.createElement('div');
+        statBar.className = 'stat-bar';
+        
+        const statBarFill = document.createElement('div');
+        statBarFill.className = 'stat-bar-fill';
+        statBarFill.style.width = `${character.stats[key]}%`;
+        
+        const statValue = document.createElement('span');
+        statValue.className = 'stat-value';
+        statValue.textContent = character.stats[key];
+        
+        statBar.appendChild(statBarFill);
+        statRow.appendChild(statLabel);
+        statRow.appendChild(statBar);
+        statRow.appendChild(statValue);
+        statsContainer.appendChild(statRow);
+    }
+    
+    card.appendChild(img);
+    card.appendChild(name);
+    card.appendChild(anime);
+    card.appendChild(statsContainer);
+    
+    return card;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 4. UNIVERSE SECTION RENDERER
+// ═══════════════════════════════════════════════════════════════
+
+function renderCharacterArchive() {
+    const archiveContainer = document.getElementById('characterArchive');
+    if (!archiveContainer) return;
+    
+    archiveContainer.innerHTML = '';
+    
+    const universeNames = {
+        naruto: 'Naruto Universe',
+        dragonBall: 'Dragon Ball Universe',
+        deathNote: 'Death Note Universe',
+        onePiece: 'One Piece Universe',
+        bleach: 'Bleach Universe',
+        attackOnTitan: 'Attack on Titan Universe',
+        demonSlayer: 'Demon Slayer Universe',
+        jujutsuKaisen: 'Jujutsu Kaisen Universe',
+        pokemon: 'Pokémon Universe',
+        myHeroAcademia: 'My Hero Academia Universe',
+        fullmetalAlchemist: 'Fullmetal Alchemist Universe',
+        hunterXHunter: 'Hunter x Hunter Universe',
+        codeGeass: 'Code Geass Universe',
+        hellsing: 'Hellsing Universe',
+        baki: 'Baki Universe'
+    };
+    
+    for (const [key, characters] of Object.entries(CHARACTER_DATABASE)) {
+        const section = document.createElement('div');
+        section.className = 'universe-section';
+        
+        const title = document.createElement('h3');
+        title.className = 'universe-title';
+        title.textContent = universeNames[key] || key;
+        
+        const grid = document.createElement('div');
+        grid.className = 'character-grid';
+        
+        characters.forEach(character => {
+            const card = createCharacterCard(character);
+            grid.appendChild(card);
+        });
+        
+        section.appendChild(title);
+        section.appendChild(grid);
+        archiveContainer.appendChild(section);
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 5. UNIVERSE CARDS
+// ═══════════════════════════════════════════════════════════════
+
+function renderUniverseCards() {
+    const container = document.getElementById('universeCards');
+    if (!container) return;
+    
+    const universes = [
+        { name: 'Naruto', count: CHARACTER_DATABASE.naruto.length, desc: 'Hidden Leaf, loud heart, stubborn resolve.' },
+        { name: 'Naruto: Shippuden', count: CHARACTER_DATABASE.naruto.length, desc: 'Older, heavier, but the same fire burning.' },
+        { name: 'Fullmetal Alchemist', count: CHARACTER_DATABASE.fullmetalAlchemist.length, desc: 'Equivalent trade, impossible choices, steel bonds.' },
+        { name: 'Hunter x Hunter', count: CHARACTER_DATABASE.hunterXHunter.length, desc: 'Nen systems, cruel exams, impossible ceilings.' }
+    ];
+    
+    container.innerHTML = '';
+    
+    universes.forEach(universe => {
+        const card = document.createElement('div');
+        card.className = 'universe-card';
+        card.innerHTML = `
+            <h4>${universe.name}</h4>
+            <p class="char-count">${universe.count} primary characters</p>
+            <p class="desc">${universe.desc}</p>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 6. FATE SPINNER
+// ═══════════════════════════════════════════════════════════════
+
+function initFateSpinner() {
+    const spinBtn = document.getElementById('spinBtn');
+    const spinResult = document.getElementById('spinResult');
+    
+    if (!spinBtn || !spinResult) return;
+    
+    const universes = Object.keys(CHARACTER_DATABASE);
+    
+    spinBtn.addEventListener('click', () => {
+        spinBtn.disabled = true;
+        spinResult.textContent = 'Spinning...';
+        
+        setTimeout(() => {
+            const randomUniverse = universes[Math.floor(Math.random() * universes.length)];
+            const randomCharacter = CHARACTER_DATABASE[randomUniverse][
+                Math.floor(Math.random() * CHARACTER_DATABASE[randomUniverse].length)
+            ];
+            
+            spinResult.textContent = `${randomCharacter.name} from ${randomCharacter.anime}`;
+            spinBtn.disabled = false;
+        }, 1500);
+    });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 7. MC TRIALS
+// ═══════════════════════════════════════════════════════════════
+
+let currentStreak = 0;
+let currentQuestion = null;
+
+const trivia = [
+    { question: "He once stole a legendary scroll and painted graffiti on faces.", options: ["Goku", "Naruto", "Light", "Lelouch"], answer: "Naruto" },
+    { question: "Known as the strongest sorcerer with limitless power and Six Eyes.", options: ["Gojo", "Sukuna", "Madara", "Aizen"], answer: "Gojo" },
+    { question: "This character can erase anyone's name and end their life with a notebook.", options: ["Light", "L", "Near", "Lelouch"], answer: "Light" },
+    { question: "A rubber boy who dreams of becoming the Pirate King.", options: ["Luffy", "Zoro", "Ace", "Naruto"], answer: "Luffy" },
+    { question: "The prince of all Saiyans with an eternal rivalry.", options: ["Goku", "Vegeta", "Gohan", "Trunks"], answer: "Vegeta" }
+];
+
+function loadQuestion() {
+    const questionEl = document.getElementById('trialQuestion');
+    const optionsEl = document.getElementById('trialOptions');
+    
+    if (!questionEl || !optionsEl) return;
+    
+    currentQuestion = trivia[Math.floor(Math.random() * trivia.length)];
+    
+    questionEl.textContent = currentQuestion.question;
+    optionsEl.innerHTML = '';
+    
+    currentQuestion.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.className = 'trial-option';
+        btn.addEventListener('click', () => checkAnswer(option, btn));
+        optionsEl.appendChild(btn);
+    });
+}
+
+function checkAnswer(selected, btn) {
+    const streakEl = document.getElementById('streakCount');
+    
+    if (selected === currentQuestion.answer) {
+        btn.style.background = '#4CAF50';
+        currentStreak++;
+        if (streakEl) streakEl.textContent = currentStreak;
+        setTimeout(() => loadQuestion(), 1000);
+    } else {
+        btn.style.background = '#f44336';
+        currentStreak = 0;
+        if (streakEl) streakEl.textContent = currentStreak;
+        setTimeout(() => loadQuestion(), 1500);
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 8. WORLD PRESSURE
+// ═══════════════════════════════════════════════════════════════
+
+function initWorldPressure() {
+    const pressureFill = document.getElementById('pressureFill');
+    const awakeningBtn = document.getElementById('awakeningBtn');
+    
+    if (!pressureFill || !awakeningBtn) return;
+    
+    let pressure = 100;
+    
+    awakeningBtn.addEventListener('click', () => {
+        pressure = Math.max(0, pressure - 10);
+        pressureFill.style.width = pressure + '%';
+        pressureFill.textContent = pressure + '%';
+        
+        if (pressure === 0) {
+            awakeningBtn.textContent = 'Awakened ✓';
+            awakeningBtn.disabled = true;
+        }
+    });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// 9. INITIALIZATION
+// ═══════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderCharacterArchive();
+    renderUniverseCards();
+    initFateSpinner();
+    initWorldPressure();
+    loadQuestion();
+    
+    console.log('🎯 Anime MC Hub initialized');
+    console.log(`📊 Total characters: ${Object.values(CHARACTER_DATABASE).flat().length}`);
+});
